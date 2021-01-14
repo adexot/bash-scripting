@@ -3,14 +3,15 @@
 # array declaration
 my_array=(foo bar clock meeed)
 # declare an associative array or dictionary
-declare -a ass
-ass+=([name]=Jogh [age]=23)
+# NB: the declare -A for declaring associative array is only available in  bash 4.0+
+declare -A ass_array
+ass_array+=([name]=Jogh [age]=23)
 
 echo ${arr[@]}
 
 # looping through an arrayddd
 function loop_array() {
-  for i in "${ass[@]}"; do
+  for i in "${ass_array[@]}"; do
     echo $i
   done
 }
@@ -19,7 +20,7 @@ loop_array
 
 # count the elements in an array
 function count_array() {
-  echo ${#my_array} ${#as_array}
+  echo ${#my_array} ${#ass_array}
 }
 
 count_array
